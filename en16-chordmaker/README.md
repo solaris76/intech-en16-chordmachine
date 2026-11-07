@@ -17,44 +17,44 @@ After install + **Store**, play with no computer — only a MIDI host.
 
 ## What does what (cheat sheet)
 
-Orientation: **USB-C = top**. Bottom-right = **enc 15**.
+User numbering: **1–16** (top-left = **1**, bottom-right = **16**). USB-C = top.
 
 ```text
-  0   1   2   3     voices (pitch / on-off)
-  4   5   6   7     voices
-  8   9  10  11     transpose / octave / inversion / spread
- 12  13  14  15     strum / HOLD / slot / velocity+SAVE
+  1   2   3   4     voices (pitch / on-off)
+  5   6   7   8     voices
+  9  10  11  12     transpose / octave / inversion / spread
+ 13  14  15  16     strum / HOLD / slot / velocity+SAVE
 ```
 
 | Encoder | Turn | Push |
 |---|---|---|
-| **0–7** | Voice pitch (chromatic) | Voice on / off |
-| **8** | Transpose | Reset transpose |
-| **9** | Octave | Reset octave |
-| **10** | Inversion | Reset inversion |
-| **11** | Spread | Reset spread |
-| **12** | Strum spacing | Toggle strum flag |
-| **13** | Gate length | **Hold / release chord** |
-| **14** | Select slot 1–16 | Recall that slot |
-| **15** | Velocity | **Enter save / recall mode** |
+| **1–8** | Voice pitch (chromatic) | Voice on / off |
+| **9** | Transpose | Reset transpose |
+| **10** | Octave | Reset octave |
+| **11** | Inversion | Reset inversion |
+| **12** | Spread | Reset spread |
+| **13** | Strum spacing | Toggle strum flag |
+| **14** | Gate length | **Hold / release chord** |
+| **15** | Select slot 1–16 | Recall that slot |
+| **16** | Velocity | **Enter save / recall mode** |
 
 ### Save a chord
-1. **Push 15** → save mode (slots light up; each filled slot has its own colour)  
-2. **Push 14** → save arm (amber)  
-3. **Push slot 0–13** (or **15** while armed → slot 16)  
-4. **Push 15** again to exit (when not armed)
+1. **Push 16** → save mode (slots light up; each filled slot has its own colour)  
+2. **Push 15** → save arm (amber)  
+3. **Push slot 1–14** (or **16** while armed → slot 16)  
+4. **Push 16** again to exit (when not armed)
 
 ### Recall
 - Save mode: push a coloured slot  
-- Edit mode: turn **14** to choose, push **14** to load  
+- Edit mode: turn **15** to choose, push **15** to load  
 
-**Enc 14** in edit mode shows that slot’s colour so you can see which chord is selected.
+**Encoder 15** in edit mode shows that slot’s colour so you can see which chord is selected.
 
 ### LEDs (edit)
-- Voices: green = on, dim = off, blue = root  
-- Enc 14: unique colour per slot  
-- Enc 15: purple = unsaved edits; amber = idle  
-- Enc 13 amber when hold is on  
+- Voices: green = on, dim = off, blue = root (encoder 1)  
+- Encoder 15: unique colour per slot  
+- Encoder 16: purple = unsaved edits; amber = idle  
+- Encoder 14 amber when hold is on  
 
 MIDI: USB channel **1**. Chord bank is **RAM only** (clears on power cycle). Save a Grid **Profile** after install.
 

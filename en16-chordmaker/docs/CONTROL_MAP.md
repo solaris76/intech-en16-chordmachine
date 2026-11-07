@@ -1,6 +1,9 @@
 # Control Map — EN16 Chord Maker
 
-Element indices assume default orientation (USB-C edge = top). Bottom-right = **15**.
+Grid **element indices 0–15** (for install / Editor).  
+For play docs numbered **1–16**, see [`USER_GUIDE.md`](USER_GUIDE.md) (add 1 to each index below).
+
+Default orientation: USB-C edge = top. Bottom-right element = **15** (user guide encoder **16**).
 
 ## Edit mode
 
