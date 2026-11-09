@@ -4,11 +4,11 @@ Source: https://github.com/mattcoffyn/Seque-MIDI-Sequencer-for-Grid
 Profile Cloud: `grid-editor://?config-link=V67kSzIxCPu7xmDfVS1g`  
 Repo ships README only (no Lua sources); real config lives in Profile Cloud.
 
-Seque is an **8-channel polyphonic sequencer**, not a chord memory instrument. Useful patterns for our EN16 chord maker:
+Seque is an **8-channel polyphonic sequencer**, not a chord memory instrument. Useful patterns for our EN16 chord machine:
 
 ## What to borrow
 
-| Seque idea | Chord-maker use |
+| Seque idea | Chord-machine use |
 |---|---|
 | Encoders **0–7** = eight independent voices / steps | Aligns with our Edit Mode voices 1–8 |
 | Encoder **button toggles enable** without destroying pitch | Same as voice enable/disable |

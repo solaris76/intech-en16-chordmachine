@@ -1,34 +1,29 @@
-# Minimal Chord Maker — easy install
+# Minimal install — 4 voices (easier)
 
-Smaller feature set so you **don’t** fight the 16-way Setup spread.  
-**Preset-friendly:** every encoder gets the **same** Setup.
+Smaller feature set so every encoder can share the **same** Setup (**Preset OK**).
 
 ## What you get
-- 4 voices (enc 0–3 turn = pitch, push = on/off)
-- Enc **13** push = hold / release chord
-- Basic green LEDs on voices
-- No save/recall, transpose, strum, etc.
+- Voices on encoders **1–4** (turn = pitch, push = on/off)  
+- Encoder **14** push = hold / release  
+- Basic green LEDs  
+- No save/recall, transpose, etc.
 
-## Install (page of your choice)
+Full app: [`INSTALLATION.md`](INSTALLATION.md) · Play docs: [`USER_GUIDE.md`](USER_GUIDE.md) (1–16 numbering)
 
-### 1. System (16) → Setup
-One Code Block only — paste `snippets/install/minimal_system.lua` (~902 chars).
+## Steps
 
-### 2. One encoder, then Preset to all
-On **element 0**:
+### 1. System (element 16) → Setup
+One Code Block → paste `snippets/install/minimal_system.lua`
 
+### 2. Element 0 (user encoder 1), then Preset
 | Event | Paste |
 |---|---|
-| Setup | `snippets/install/minimal_enc_setup.lua` |
-| Encoder | `snippets/install/all_encoder.lua` |
-| Button | `snippets/install/all_button.lua` |
+| Setup | `minimal_enc_setup.lua` |
+| Encoder | `all_encoder.lua` |
+| Button | `all_button.lua` |
 
-Delete factory MIDI CC / Note.
-
-Save element 0 as a **Preset** → apply to **1–15**. Same Setup on all is OK here.
+Delete factory MIDI CC / Note.  
+Save as Preset → apply to elements **1–15**.
 
 ### 3. Store
-Push **13** = hold; turn **0–3** = pitches.
-
-## vs full install
-Full app (`docs/INSTALLATION.md` + `e0`…`e9` spread) has 8 voices + memory slots, but Grid’s ~908 **per-element** limit makes Setup pastes painful. Use minimal until you want the full feature set (or File Manager `require()`).
+Push **14** = hold; turn **1–4** = pitches.

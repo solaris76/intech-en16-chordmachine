@@ -1,4 +1,4 @@
-# User Guide — EN16 Chord Maker
+# User Guide — EN16 Chord Machine
 
 Standalone USB-MIDI chord instrument for the **Intech Studio EN16**.  
 **8 voices**, hold from the encoders, **16 memory slots** — no computer after install.

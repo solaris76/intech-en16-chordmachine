@@ -1,4 +1,4 @@
--- EN16 Chord Maker application root (host-testable).
+-- EN16 Chord Machine application root (host-testable).
 
 local Config = require("config")
 local GridAdapter = require("grid_adapter")

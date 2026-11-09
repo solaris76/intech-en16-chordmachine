@@ -1,4 +1,4 @@
--- Shared configuration for EN16 Chord Maker (host + device mirror).
+-- Shared configuration for EN16 Chord Machine (host + device mirror).
 
 local Config = {
   midi_channel = 0, -- Grid 0 == MIDI channel 1

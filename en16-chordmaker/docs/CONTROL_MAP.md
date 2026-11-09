@@ -1,4 +1,4 @@
-# Control Map — EN16 Chord Maker
+# Control Map — EN16 Chord Machine
 
 Grid **element indices 0–15** (for install / Editor).  
 For play docs numbered **1–16**, see [`USER_GUIDE.md`](USER_GUIDE.md) (add 1 to each index below).

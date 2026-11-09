@@ -1,134 +1,130 @@
-# Installation — Full EN16 Chord Maker
+# Installation — EN16 Chord Machine (full)
 
-Fed up with the spread install? Use the **easy path** instead: [`MINIMAL_INSTALL.md`](MINIMAL_INSTALL.md) (4 voices, one System block, Preset OK).
+Paste the scripts in `snippets/install/` into Grid Editor, then **Store**.  
+After that, play from the [User Guide](USER_GUIDE.md) (encoders numbered **1–16**).
 
-After full install, see the [User Guide](USER_GUIDE.md) for play, edit, and save/recall.
-
-> **Important (FW 1.5.6):** The ~**908 character** limit is for **all Code Blocks on one element combined**, not per block. Multiple System Setup blocks that sum over ~908 → “config limit reached”. Use the **spread install** below: **one** short System block, put the rest on encoder **Setup** events (each encoder gets its own ~908 budget).
-
----
-
-## 0. Clear the page first
-
-1. Strip factory **MIDI CC** / **MIDI Note** from encoders (blank Preset on enc 0 → apply to 1–15), or use an unused page  
-2. Confirm you have free config memory (tens of k is fine)  
-3. System (element 16) → Setup should be empty  
-4. **Store**
+Want an easier 4-voice install? → [`MINIMAL_INSTALL.md`](MINIMAL_INSTALL.md)
 
 ---
 
-## 1. System Setup — **one** Code Block only
+## Before you start
 
-**On the same page you’re installing** (e.g. page 2): **System (16) → Setup** → single Code Block → paste:
-
-`snippets/install/system_setup.lua`
-
-Do **not** add a second System Code Block.
-
-Must start with `CM={ch=0`. After Store, Debug monitor should show `CM` once on page load. If you never see that, System Setup isn’t on this page and nothing else will work.
-
----
-
-## 2. Encoder Setup — library spread (elements 0–9)
-
-Each file is **one** Code Block on that encoder’s **Setup** event (replace other Setup actions if needed):
-
-| Element | Paste |
+| Need | Notes |
 |---|---|
-| 0 | `snippets/install/e0_setup.lua` |
-| 1 | `snippets/install/e1_setup.lua` |
-| 2 | `snippets/install/e2_setup.lua` |
-| 3 | `snippets/install/e3_setup.lua` |
-| 4 | `snippets/install/e4_setup.lua` |
-| 5 | `snippets/install/e5_setup.lua` |
-| 6 | `snippets/install/e6_setup.lua` |
-| 7 | `snippets/install/e7_setup.lua` |
-| 8 | `snippets/install/e8_setup.lua` |
-| 9 | `snippets/install/e9_setup.lua` |
+| EN16 | Firmware **1.5.6+** recommended |
+| Grid Editor | Connected to the module |
+| Free page | Prefer an empty page (e.g. page 2) so factory MIDI isn’t in the way |
+| Free config memory | Tens of k free is enough |
 
-Init order is System → 0 → 1 → … so paste in that order.
+**Why so many pastes?** Grid allows ~**908 characters per element**. The app is larger than that, so code is split: **one** System block + unique **Setup** on encoders 1–10 (elements 0–9).
 
-**After each paste, check the first line before moving on:**
+**Critical:** Do **not** copy a whole-element Preset from encoder 1 onto the others after the Setup spread — that clones the wrong Setup and breaks the app.
 
-| El | First line must be |
-|---|---|
-| Sys | `CM={ch=0` |
-| 0 | `function CM.on` |
-| 1 | `function CM.comp` |
-| 2 | `function CM.trig` |
-| 3 | `function CM.apply` |
-| 4 | `function CM.col` |
-| 5 | `function CM.p` |
-| 6 | `function CM.dlt` |
-| 7 | `function CM._ed` |
-| 8 | `function CM.btn` |
-| 9 | `function CM._b2` |
-
-If several elements all show `function CM.on`, Grid cloned enc 0 (Preset) or failed to overwrite. Use the rebuild below — **never** apply a whole-element Preset after this step.
-
-### Rebuild when Editor keeps showing the wrong Setup
-
-For **each** element 0–9 (one at a time):
-
-1. Setup → **delete** the Code Block action (trash the action)  
-2. **Store**  
-3. **+** new Code Block  
-4. Paste the matching `eN_setup.lua`  
-5. Confirm first line matches the table  
-6. **Store**  
-7. Click another element, click back — still correct? Only then do the next index  
-
-Do **not** batch with Presets.
+In Grid Editor, elements are **0–15** (System = **16**). That matches the file names (`e0`…`e9`). User guide numbers are those **+ 1**.
 
 ---
 
-## 3. Encoders 10–15 Setup
+## Checklist (do in order)
 
-On each of **10–15** → Setup → paste:
+### 1. Clear the page
+1. Remove factory **MIDI CC** / **MIDI Note** from encoders (or use a blank page).  
+2. System (16) → Setup should be empty.  
+3. **Store**.
+
+### 2. System Setup — one block only
+1. Select **System (element 16)** → **Setup**.  
+2. Add **one** Code Block.  
+3. Paste all of: `snippets/install/system_setup.lua`  
+4. First line must be: `CM={ch=0`  
+5. Do **not** add a second System Code Block.  
+6. **Store**. Debug should print `CM` once on page load.
+
+### 3. Encoder Setup — unique files (elements 0–9)
+
+On each encoder’s **Setup** event, **one** Code Block, paste the matching file:
+
+| Grid element | User guide enc | File | First line must be |
+|---|---|---|---|
+| 0 | 1 | `e0_setup.lua` | `function CM.on` |
+| 1 | 2 | `e1_setup.lua` | `function CM.comp` |
+| 2 | 3 | `e2_setup.lua` | `function CM.trig` |
+| 3 | 4 | `e3_setup.lua` | `function CM.apply` |
+| 4 | 5 | `e4_setup.lua` | `function CM.sc` or `function CM.col` |
+| 5 | 6 | `e5_setup.lua` | `function CM.p` |
+| 6 | 7 | `e6_setup.lua` | `function CM.dlt` |
+| 7 | 8 | `e7_setup.lua` | `function CM._ed` |
+| 8 | 9 | `e8_setup.lua` | `function CM.btn` |
+| 9 | 10 | `e9_setup.lua` | `function CM._b2` |
+
+**How to paste so Grid doesn’t revert**
+
+For each element 0→9:
+
+1. Trash any existing Setup Code Block → **Store**  
+2. Add a **new** Code Block → paste file → check first line  
+3. **Store** → click away → click back → still correct?  
+4. Only then do the next element  
+
+If several Setups all start with `function CM.on`, a Preset cloned encoder 0 — redo those elements with the table above.
+
+### 4. Encoder Setup — elements 10–15 (user enc 11–16)
+
+Paste the **same** file on each Setup:
 
 `snippets/install/e_rest_setup.lua`
 
-(Or copy element 10’s Setup Preset to 11–15.)
+Preset from element 10 → 11–15 is OK here (identical Setup).
 
----
+### 5. Encoder + Button events (all 16)
 
-## 4. Encoder + Button events (all 16)
+On **every** element 0–15, **Encoder** and **Button** only (leave Setup alone):
 
-> **Do not** save a whole-element Preset from enc 0 and apply to 1–15 after step 2 — that **overwrites** each encoder’s unique Setup library and leaves you with blank LEDs / no MIDI.
-
-On **every** encoder `0..15`, edit **Encoder** and **Button** only:
-
-| Event | File | Also |
+| Event | Paste | Remove |
 |---|---|---|
-| Encoder | `snippets/install/all_encoder.lua` | Delete factory MIDI CC |
-| Button | `snippets/install/all_button.lua` | Delete factory MIDI Note |
+| Encoder | `all_encoder.lua` | Factory MIDI CC |
+| Button | `all_button.lua` | Factory MIDI Note |
 
-Paste those two events on each element (or use a Preset **only if** it does not replace Setup — when in doubt, paste by hand). **Leave Setup alone** after step 2–3.
+Paste by hand, or use a Preset **only if** it does not overwrite Setup.
 
----
-
-## 5. Store & smoke test
+### 6. Store and test
 
 1. **Store**  
-2. Quit Editor; plug into a MIDI host  
-3. Push **encoder 13** → chord holds  
-4. Turn **0–7** → pitches move  
-5. Push **15** → Save/Recall; **14** → Save Arm  
+2. LEDs should light (voices green, etc.)  
+3. Push user-guide **encoder 14** (Grid element **13**) → chord Note Ons  
+4. Turn encoders **1–8** → pitches change  
+5. Push **16** → save mode; **15** → save arm; save a slot  
 
----
+If you only get a single top note (e.g. G8 @ 127), factory MIDI Note is still on a Button event — delete it.
 
-## 6. Backup
-
+### 7. Backup
 Save the page as a **Profile** so you never re-paste.
 
 ---
 
-## Panic
+## Smoke-test failures
 
-Temporary Code Block: `CM.panic()`
+| Symptom | Likely cause |
+|---|---|
+| No LEDs, `CM.enc` / `CM.btn` nil in Debug | Setup spread overwritten / incomplete; check first-line table |
+| `config limit reached` on System | Second System Code Block — keep **one** only |
+| Setup keeps reverting to `CM.on` | Editor didn’t replace block — trash → Store → new block → paste |
+| Double-press needed | `button_mode` must be **0** (momentary) — already in current snippets |
+| Chord bank empty after reboot | Expected — slots are session RAM; scripts persist after Store |
+
+Panic (stuck notes): temporary System Code Block → `CM.panic()`
 
 ---
 
-## Legacy (10 System blocks)
+## File map
 
-The old `snippets/device/*` “10 System Code Blocks” layout **does not work** when the ~908 limit is per-element total. Use `snippets/install/` instead.
+All under `snippets/install/`:
+
+```text
+system_setup.lua      → System Setup (once)
+e0_setup.lua … e9_setup.lua → elements 0–9 Setup (unique)
+e_rest_setup.lua      → elements 10–15 Setup
+all_encoder.lua       → every Encoder event
+all_button.lua        → every Button event
+```
+
+Legacy `snippets/device/*` (many System blocks) — **do not use** on FW with a ~908 per-element budget.

@@ -1,4 +1,4 @@
-# EN16 MIDI Chord Maker
+# EN16 MIDI Chord Machine
 
 Standalone USB-MIDI chord instrument for the **Intech Studio EN16** (USB-MIDI only — no CV).
 
@@ -8,10 +8,10 @@ After install + **Store**, play with no computer — only a MIDI host.
 
 | Doc | What it’s for |
 |---|---|
-| **[User guide](docs/USER_GUIDE.md)** | **What each encoder does** (start here to play) |
-| [Installation](docs/INSTALLATION.md) | Full install (`snippets/install/` spread) |
-| [Minimal install](docs/MINIMAL_INSTALL.md) | Easier 4-voice install |
-| [Control map](docs/CONTROL_MAP.md) | Compact reference tables |
+| **[User guide](docs/USER_GUIDE.md)** | Play — encoders **1–16**, what each does |
+| **[Installation](docs/INSTALLATION.md)** | Install checklist — what to paste where |
+| [Minimal install](docs/MINIMAL_INSTALL.md) | Easier 4-voice install (Preset OK) |
+| [Control map](docs/CONTROL_MAP.md) | Grid element **0–15** reference |
 
 ---
 
